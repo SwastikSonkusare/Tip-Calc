@@ -1,36 +1,34 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import dollarIcon from "../assets/images/icon-dollar.svg";
 import personIcon from "../assets/images/icon-person.svg";
-import Logo from "../assets/images/logo.svg"
+import Logo from "../assets/images/logo.svg";
 
 import "./MainSection.scss";
 const MainSection = () => {
   const tips = ["5%", "10%", "15%", "20%", "50%"];
 
-  const [bill, setBill] = useState(0);
-  const [tip, setTip] = useState(0);
+  const [bill, setBill] = useState();
+  const [tip, setTip] = useState();
   const [numberOfPeople, setNumberOfPeople] = useState();
   const [tipPerPerson, setTipPerPerson] = useState();
   const [totalAmountPerPerson, setTotalAmountPerPerson] = useState();
   const [totalTip, setTotalTip] = useState();
   let [customTip, setCustomTip] = useState();
 
-
- 
   const tipHandler = (tip) => {
-
-  
     const modifiedTip = parseFloat(tip) / 100;
     setTip(modifiedTip);
   };
 
   const resetHandler = () => {
-    setBill(0);
-    setTip(0);
-    setNumberOfPeople(0);
-    setTipPerPerson(0);
-    setCustomTip(0);
+    setBill("");
+    setTip("");
+    setNumberOfPeople("");
+    setCustomTip("");
+    setTipPerPerson("");
+
+    setTotalAmountPerPerson("");
   };
 
   const calcTip = () => {
@@ -45,17 +43,27 @@ const MainSection = () => {
 
     const totalBill = parseFloat(bill) + parseFloat(totalTip);
 
-    setTipPerPerson((totalTip / numberOfPeople).toFixed(2));
-    setTotalAmountPerPerson((totalBill / numberOfPeople).toFixed(2));
+    if (numberOfPeople) {
+      setTipPerPerson((totalTip / numberOfPeople).toFixed(2));
+      setTotalAmountPerPerson((totalBill / numberOfPeople).toFixed(2));
+    }
   };
 
   useEffect(() => {
     calcTip();
-  }, [numberOfPeople, bill, customTip, tip, totalAmountPerPerson, totalTip]);
+  }, [
+    numberOfPeople,
+    bill,
+    customTip,
+    tip,
+    numberOfPeople,
+    totalAmountPerPerson,
+    totalTip,
+  ]);
 
   return (
     <main className="main">
-        <img className="main__logo" src={Logo} alt={Logo}></img>
+      <img className="main__logo" src={Logo} alt={Logo}></img>
 
       <div className="container">
         <div className="container__left-section">
@@ -66,6 +74,7 @@ const MainSection = () => {
               type="number"
               value={bill}
               onChange={(e) => setBill(e.target.value)}
+              placeholder="0"
             ></input>
             <img
               className="container__icon"
@@ -77,7 +86,7 @@ const MainSection = () => {
           <div className="select-tip">
             <h4 className="select-tip__header">Select Tip %</h4>
             <div className="select-tip-content">
-              {tips.map((tip, index) => (
+              {tips.map((tip) => (
                 <button
                   className="select-tip--unmodified"
                   onClick={() => tipHandler(tip)}
@@ -102,6 +111,7 @@ const MainSection = () => {
               value={numberOfPeople}
               onChange={(e) => setNumberOfPeople(e.target.value)}
               type="number"
+              placeholder="0"
             ></input>
             <img
               className="container__icon"

@@ -110,7 +110,7 @@
         border: none;
         border-radius: 5px;
         text-align: end;
-        color: $color-cyan;
+        color:  $very-dark-cyan;
         font-weight: 700;
         font-size: 2rem;
         transition: .2s border;
@@ -154,10 +154,14 @@
         font-weight: 900;
         cursor: pointer;
 
-        &:focus-within,
-         {
-            background-color: $dark-grayish-cyan-primary;
+
+        & acitve {
+            background-color: #fff;
         }
+
+        // &:focus-within {
+        //     background-color: $dark-grayish-cyan-primary;
+        // }
 
         &:hover {
             background-color: $light-grayish-cyan-primary;
