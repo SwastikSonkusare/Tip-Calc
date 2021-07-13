@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
+@import './styles/_variables.scss';
+
 *,
 *::before, 
 *::after {
@@ -17,4 +19,6 @@ html {
 body {
     min-height: 100vh;
     box-sizing: border-box;
+
+    background-color: $color-cyan;
 }

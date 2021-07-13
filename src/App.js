@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import MainSection from "./components/MainSection";
 
 const App = () => {
-    return (
-        <div>
-            App
-        </div>
-    )
-}
+  return (
+    <>
+      <MainSection />
+    </>
+  );
+};
 
-export default App
+export default App;
