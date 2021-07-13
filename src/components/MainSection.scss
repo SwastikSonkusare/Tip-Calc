@@ -1,8 +1,36 @@
-header {
+@import '../styles/variables';
 
+main {
+    min-height: 100vh;
+    max-width: 70rem;
+    margin: auto;
+}
+
+header {
+    color: $very-dark-cyan;
+    text-align: center;
+    margin: 10rem 0 5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .container {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    background-color: $color-white;
+    border: none;
+    border-radius: 15px;
+
+    &__icon {
+        width: 11px;
+        position: absolute;
+        top: 59%;
+        left: 15px;
+    }
 
 
     &__left-section {
@@ -25,40 +53,68 @@ header {
         }
 
         &-reset {
-            
+
         }
     }
 }
 
 .bill, .number-of-people {
-
-
-    &__header {
-
-    }
-
+    position: relative;
+    display: flex;
+    grid-gap: .5rem;
+    flex-direction: column;
+    
     &__input {
-        
+        background-color: $light-grayish-cyan-primary;
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        text-align: end;
+        color: $color-cyan;
+        font-weight: 700;
+        font-size: 2rem;
+
+        &:focus-within {
+            outline: none;
+        }
     }
 }
 
+.bill__header,
+.number-of-people__header,
+.select-tip__header {
+    font-size: 1.5rem;
+    color: $dark-grayish-cyan-primary;
+    font-weight: 700;
+}
+
 .select-tip {
+    margin: 2.5rem 0;
 
 
-    &__header {
-
-    }
-
-    &__content {
-
+    &-content {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+        grid-gap: 1rem;
     }
 
     &--unmodified {
-
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        color: $light-grayish-cyan-secondary;
+        background-color: $very-dark-cyan;
+        border: none;
+        border-radius: 5px;
+        font-weight: 900;
     }
 
     &--custom {
-
+        font-size: 1.8rem;
+        border: none;
+        background-color: $light-grayish-cyan-secondary;
+        color: $dark-grayish-cyan-primary;
+        font-weight: 900;
     }
 }
 
