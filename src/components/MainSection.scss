@@ -1,29 +1,33 @@
 @import '../styles/variables';
 
-main {
+.main {
     min-height: 100vh;
-    max-width: 70rem;
+    max-width: 80rem;
     margin: auto;
+
+    &__logo {
+        margin: 10rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 }
 
-header {
-    color: $very-dark-cyan;
-    text-align: center;
-    margin: 10rem 0 5rem 0;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-    font-size: 1.8rem;
-    font-weight: 700;
-}
+
 
 .container {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    grid-gap: 3rem;
     padding: 3rem;
     background-color: $color-white;
     border: none;
     border-radius: 15px;
+    margin: 0 1rem;
+
+    @media only screen and (max-width: 40.625em) {
+        flex-direction: column;
+    }
 
     &__icon {
         width: 11px;
@@ -32,28 +36,64 @@ header {
         left: 15px;
     }
 
-
     &__left-section {
+        width: 50%;
 
+        @media only screen and (max-width: 40.625em) {
+            width: 100%;
+        }
     }
 
+
     &__right-section {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 4rem 3rem 2rem 3rem;
+        background-color: $very-dark-cyan;
+        border-radius: 15px;
+
+        @media only screen and (max-width: 40.625em) {
+            width: 100%;
+        }
+
+
 
 
         &-content {
-
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
         }
 
         &-header {
+            font-size: 1.2rem;
+            color: $light-grayish-cyan-secondary;
+            font-weight: 700;
 
+            & span {
+                color: $dark-grayish-cyan-primary;
+                font-size: 1rem;
+            }
         }
 
         &-number {
-
+            font-size: 3rem;
+            color: $color-cyan;
+            font-weight: 700;
         }
 
         &-reset {
-
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            cursor: pointer;
         }
     }
 }
@@ -73,6 +113,11 @@ header {
         color: $color-cyan;
         font-weight: 700;
         font-size: 2rem;
+        transition: .2s border;
+
+        &:hover {
+            border: 2px solid $very-dark-cyan;
+        }
 
         &:focus-within {
             outline: none;
@@ -107,17 +152,33 @@ header {
         border: none;
         border-radius: 5px;
         font-weight: 900;
-    }
+        cursor: pointer;
 
+        &:focus-within,
+         {
+            background-color: $dark-grayish-cyan-primary;
+        }
+
+        &:hover {
+            background-color: $light-grayish-cyan-primary;
+            color: $very-dark-cyan;
+        }
+    }
+    
     &--custom {
         font-size: 1.8rem;
         border: none;
         background-color: $light-grayish-cyan-secondary;
         color: $dark-grayish-cyan-primary;
         font-weight: 900;
+        cursor: pointer;
+        text-align: end;
+        padding: 1rem;
     }
 }
 
 
 
-
+.tip-color {
+    background-color: $dark-grayish-cyan-primary;
+}
